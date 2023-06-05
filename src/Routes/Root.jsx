@@ -7,35 +7,55 @@ import SignUp from '../Pages/Sign-UP/SignUp';
 import AllCourses from '../Pages/Courses-page/AllCourses/AllCourses';
 import Faq from '../Pages/FAQ/FAQ';
 import Blog from '../Pages/Blog/Blog';
+import SecondaryLayout from '../Layout/SecondaryLayout';
+import PrivateRoute from './PrivateRoute';
+import CourseDetails from '../Pages/Courses-page/CourseDetails/CourseDetails';
 
 const Root = () => {
     const router = createBrowserRouter([
         {
-            path:'/',element:<Main/>,children:[
+            path: '/', element: <Main />, children: [
                 {
-                    path:'/home',element:<Home/>
+                    path: '/', element: <Home />
                 },
                 {
-                    path:'/courses',element:<AllCourses/>
+                    path: '/home', element: <Home />
+                },
+            ],
+        },
+        {
+            path: '/', element: <SecondaryLayout />, children: [
+              
+                {
+                    path: '/courses',
+                    loader:()=>{
+                        return  fetch(`http://localhost:5000/courseName`)
+                    },
+                    element: <AllCourses />
                 },
                 {
-                    path:'/faq',element:<Faq/>
+                    path:'/courses/:id',
+                    loader:({params})=>fetch(`http://localhost:5000/courseName/${params.id}`),
+                    element:<CourseDetails/>
                 },
                 {
-                    path:'/blog',element:<Blog/>
+                    path: '/faq', element: <PrivateRoute><Faq /></PrivateRoute>
                 },
                 {
-                    path:'/logIn',element:<Login/>
+                    path: '/blog', element: <Blog />
                 },
                 {
-                    path:'/signUp',element:<SignUp/>
+                    path: '/logIn', element: <Login />
+                },
+                {
+                    path: '/signUp', element: <SignUp />
                 }
             ]
         }
     ])
     return (
         <div>
-            <RouterProvider router={router}/>
+            <RouterProvider router={router} />
         </div>
     );
 };

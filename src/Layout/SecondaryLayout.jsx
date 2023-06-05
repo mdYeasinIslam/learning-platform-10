@@ -2,13 +2,13 @@ import React from 'react';
 import Navbar from '../Pages/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 
-const Main = () => {
+const SecondaryLayout = () => {
     return (
         <div>
-           
+            <Navbar/>
             <Outlet/>
         </div>
     );
 };
 
-export default Main;
+export default SecondaryLayout;
