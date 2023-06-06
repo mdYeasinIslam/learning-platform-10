@@ -1,19 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BsDownload } from "react-icons/bs";
 import Pdf from 'react-to-pdf'
+import { DataShare } from '../../../../Context/InsideContext';
+import { setLocal } from '../../../../utilities/fakedb';
 
 const Details = ({ details }) => {
-    const ref = useRef()
+    const ref = useRef() 
     const { courseName, img, title, _id,price, courseDetails } = details
+    const {getdata} = useContext(DataShare)
+    const  passData =() =>{
+        getdata(details)
+        setLocal(_id,img,courseName,price)
+    }
     return (
-        <div className='font-[cursive] '>
+        <div className='font-[cursive]  '>
             <div className="card card-compact w-[80%]  mx-auto bg-base-100 shadow-xl">
                 <div className='flex justify-between mx-5 '>
                     <h1 className='text-3xl text-[#202c45] w-[80%] mb-5 font-semibold  '>Course Details :{title}</h1>
                     <Pdf targetRef={ref} fileName="course-Name.pdf">
                         {({ toPdf }) => <BsDownload onClick={toPdf} className='h-6 w-6' />}
-                    </Pdf>
+                    </Pdf> 
                 </div>
                 <div ref={ref}>
                     <figure><img className='w-[100%] lg:h-[30rem]' src={img} alt={courseName} /></figure>
@@ -22,7 +29,7 @@ const Details = ({ details }) => {
                         <p className='text-xl'><span className='text-[#F2184F]'>Price</span> :{price}</p>
                         <p>{courseDetails}</p>
                         <div className="card-actions">
-                            <Link className='btn btn-primary w-full'>Get Premium Access</Link>
+                            <Link onClick={passData} to={`/courses/checkout-page/${_id}`} className='btn btn-primary w-full'>Get Premium Access</Link>
                         </div>
                     </div>
                 </div>

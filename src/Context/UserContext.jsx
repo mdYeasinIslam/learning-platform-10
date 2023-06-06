@@ -6,6 +6,7 @@ export const AuthProvider = createContext()
 const UserContext = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    
     //sign-Up
     const signUpAuth = (email, password) => {
         setLoading(true)
@@ -40,6 +41,7 @@ const UserContext = ({ children }) => {
         })
         return () => subcription();
     }, [])
+   
     const userInfo = { user, signUpAuth, signInAuth, userProfileUpdate, logOutAuth, loading, varifyEmail }
     return (
         <div>

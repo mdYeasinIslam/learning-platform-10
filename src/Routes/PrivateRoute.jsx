@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthProvider)
     const location = useLocation()
+    
     if (loading) {
-        return <div className='text-4xl'>loading</div>
+        return <div className="loading loading-spinner loading-lg text-success absolute top-[50%] left-[50%]"></div>
     }
     if (user && user.emailVerified == true) {
         return children

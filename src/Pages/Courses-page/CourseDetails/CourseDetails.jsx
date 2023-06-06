@@ -12,16 +12,16 @@ const CourseDetails = () => {
     }, [])
     return (
         <div className='grid md:grid-cols-4 mt-10'>
-            <div className=' md:col-span-2 lg:col-span-1 md:ml-4  font-serif bg-[#202c45] text-[#202c45] pt-5  rounded-3xl '>
+            <div className=' md:col-span-2 lg:col-span-1 md:ml-4  font-serif bg-[#202c45] text-[#202c45] pt-5 pb-5 md:pb-0 rounded-3xl '>
                 <h3 className='w-[90%] mx-auto text-2xl pb-5 text-[#d98298]'>Course List :</h3>
-                <div className='grid gap-4 w-[90%] mx-auto'>
+                <div className='grid gap-4 w-[90%]  mx-auto'>
 
                     {
                         courses.map(course => <CoursesName key={course.id} course={course} />)
                     }
                 </div>
             </div>
-            <div className='md:col-span-3'>
+            <div className='md:col-span-2 lg:col-span-3  mt-10 md:mt-0'>
                 {
                     courseDetails.map(details => <Details key={details._id} details={details} />)
                 }

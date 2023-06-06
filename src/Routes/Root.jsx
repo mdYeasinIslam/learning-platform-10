@@ -10,6 +10,7 @@ import Blog from '../Pages/Blog/Blog';
 import SecondaryLayout from '../Layout/SecondaryLayout';
 import PrivateRoute from './PrivateRoute';
 import CourseDetails from '../Pages/Courses-page/CourseDetails/CourseDetails';
+import { CheckoutPage } from '../Pages/Courses-page/CheckOutPage/CheckoutPage';
 
 const Root = () => {
     const router = createBrowserRouter([
@@ -37,6 +38,13 @@ const Root = () => {
                     path:'/courses/:id',
                     loader:({params})=>fetch(`http://localhost:5000/courseName/${params.id}`),
                     element:<CourseDetails/>
+                }, 
+                {
+                    path:'/courses/checkout-page/:id',
+                    loader:({params})=>{
+                        return fetch(`http://localhost:5000/courseName/${params.id}`)
+                    },
+                    element:<PrivateRoute><CheckoutPage/></PrivateRoute>
                 },
                 {
                     path: '/faq', element: <PrivateRoute><Faq /></PrivateRoute>
