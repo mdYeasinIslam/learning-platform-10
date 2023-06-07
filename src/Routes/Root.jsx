@@ -30,19 +30,19 @@ const Root = () => {
                 {
                     path: '/courses',
                     loader:()=>{
-                        return  fetch(`http://localhost:5000/courseName`)
+                        return  fetch(`https://clever-yak-sari.cyclic.app/courseName`)
                     },
                     element: <AllCourses />
                 },
                 {
                     path:'/courses/:id',
-                    loader:({params})=>fetch(`http://localhost:5000/courseName/${params.id}`),
+                    loader:({params})=>fetch(`https://clever-yak-sari.cyclic.app/courseName/${params.id}`),
                     element:<CourseDetails/>
                 }, 
                 {
                     path:'/courses/checkout-page/:id',
                     loader:({params})=>{
-                        return fetch(`http://localhost:5000/courseName/${params.id}`)
+                        return fetch(`https://clever-yak-sari.cyclic.app/courseName/${params.id}`)
                     },
                     element:<PrivateRoute><CheckoutPage/></PrivateRoute>
                 },

@@ -7,7 +7,7 @@ const CourseDetails = () => {
     const [courses, setCourses] = useState([])
     const courseDetails = useLoaderData()
     useEffect(() => {
-        fetch(`http://localhost:5000/courseName`)
+        fetch(`https://clever-yak-sari.cyclic.app/courseName`)
             .then(res => res.json()).then(data => setCourses(data))
     }, [])
     return (
