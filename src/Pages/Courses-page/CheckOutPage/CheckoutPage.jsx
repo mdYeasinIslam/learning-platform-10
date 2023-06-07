@@ -1,12 +1,17 @@
-import React from 'react';
-import { DataShare } from '../../../Context/InsideContext';
+import React, { useEffect, useState } from 'react';
 import SelectedCourses from "./SelectCourses/SelectedCourses";
 import ShippingDetails from './ShippingDetails/ShippingDetails';
 const CheckoutPage = () => {
-   const data = JSON.parse(localStorage.getItem('cart'))
-   const priceCalculate = data.reduce((acc,cur)=>acc+=parseInt(cur.price),0)
-   const totalAmount = priceCalculate + 50
-   console.log(priceCalculate)
+    const [courseData, setCourseData] = useState([])
+    const [time,setTime] = useState(new Date().getTime())
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem('cart'))
+        setCourseData(data)
+       
+    }, [time])
+    const priceCalculate = courseData.reduce((acc, cur) => acc += parseInt(cur.price), 0)
+    const totalAmount = priceCalculate + 50
+
     return (
         <div className='grid md:grid-cols-4 '>
 
@@ -23,7 +28,7 @@ const CheckoutPage = () => {
                 </p>
                 <div className='space-y-4 border-2 shadow-xl'>
                     {
-                        data.map(courses => <SelectedCourses key={courses.id} courses={courses} />)
+                        courseData.map(courses => <SelectedCourses key={courses.id} setTime={setTime} courses={courses} />)
                     }
                 </div>
                 <div className='w-[90%] mx-auto font-semibold my-5 border-2 shadow-xl '>

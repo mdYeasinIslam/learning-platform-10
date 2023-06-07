@@ -12,7 +12,7 @@ const ShippingDetails = () => {
     return (
         <form onSubmit={formHandler}>
        
-            <h2 className='md:text-xl bg-[#d6d4d7] p-3 font-semibold w-[100%] mx-auto rounded-xl' >SHIPPING DETAILS</h2>
+            <h2 className='md:text-xl bg-[#d6d4d7] p-3 font-semibold w-[100%] mx-auto rounded-xl mt-3' >SHIPPING DETAILS</h2>
 
             <hr className='mt-2'/>
             <div className='w-[80%] mx-auto'>

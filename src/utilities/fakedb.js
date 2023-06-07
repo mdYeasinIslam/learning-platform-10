@@ -1,5 +1,3 @@
-
-
 export const setLocal =(id,img,courseName,price) =>{
     // console.log(id)
     let cart =JSON.parse(localStorage.getItem('cart')) || [];
@@ -13,4 +11,9 @@ export const setLocal =(id,img,courseName,price) =>{
     }
     
     localStorage.setItem('cart',JSON.stringify(cart))
+}
+export const removeItem =(id)=>{
+    const getCart = JSON.parse(localStorage.getItem('cart'));
+    const filterItems = getCart.filter(course=>course.id !== id);
+    localStorage.setItem('cart',JSON.stringify(filterItems))
 }

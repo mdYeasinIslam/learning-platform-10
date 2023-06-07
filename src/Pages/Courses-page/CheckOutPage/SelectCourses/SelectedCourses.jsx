@@ -1,14 +1,21 @@
 import React from 'react';
 import './SelectedCourse.css'
-const SelectedCourses = ({ courses }) => {
-   
-    const { courseName, img, price,quantity} = courses
+import { AiFillDelete } from "react-icons/ai";
+import { removeItem } from '../../../../utilities/fakedb';
+const SelectedCourses = ({ courses,setTime }) => {
+    const { courseName, img, price,quantity,id} = courses
+    const removeSelectedItem = ()=>{
+        removeItem(id)
+        setTime()
+    }
     return (
 
         <div className='flex w-[100%] border-2 rounded bg-[#d6d4d7] text-black'>
+            <div onClick={removeSelectedItem} className='grid items-center '>
+                <AiFillDelete className='w-6 h-6 text-[#f2184f]'/>
+            </div>
             <div className='w-14 my-auto'>
                 <figure><img className=' w-full h-12' src={img} alt="" /></figure>
-
             </div>
             <div className='md:flex justify-between w-full md:w-[90%] ml-2 lg:mx-4 '>
                 <div>
