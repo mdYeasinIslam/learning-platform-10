@@ -14,7 +14,7 @@ const Home = () => {
             <Navbar />
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
-                    <div className="hero " style={{ backgroundImage: `url("/src/assets/homeBgPic.jpg")` }}>
+                    <div className="hero " style={{ backgroundImage: `url("src/assets/homeBgPic.jpg")` }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="text-neutral-content">
                             <div className="max-w-md">
@@ -31,7 +31,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
-                    <div className="hero min-h-screen" style={{ backgroundImage: `url("/src/assets/homeBgImg2.avif")` }}>
+                    <div className="hero min-h-screen" style={{ backgroundImage: `url("src/assets/homeBgImg2.avif")` }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="  text-neutral-content">
                             <div className="max-w-md">
@@ -48,7 +48,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
-                    <div className="hero min-h-screen" style={{ backgroundImage: `url("/src/assets/homeBgImg3.jpg")` }}>
+                    <div className="hero min-h-screen" style={{ backgroundImage: `url("src/assets/homeBgImg3.jpg")` }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="max-w-md">

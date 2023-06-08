@@ -46,7 +46,7 @@ const Navbar = () => {
             </div> 
 
             <div className="flex-1">
-                <img className='h-9 w-12 ml-5' src="/src/assets/images (1).jpeg" alt="" />
+                <img className='h-9 w-12 ml-5' src="src/assets/images (1).jpeg" alt="" />
                 <NavLink   to='/home' className="btn btn-ghost text-[#F2184F] normal-case text-xl">StudyPress</NavLink>
             </div>
 
