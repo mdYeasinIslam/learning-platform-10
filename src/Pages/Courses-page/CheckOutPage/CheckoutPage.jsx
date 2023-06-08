@@ -19,7 +19,7 @@ const CheckoutPage = () => {
                 <h3 className='md:text-xl  font-semibold bg-[#d6d4d7] p-3 rounded-xl my-3'>Your orders :</h3>
                 <hr />
                 <p className='hidden md:block'>
-                    <span className='w-[100%] flex md:justify-between lg:justify-normal lg:gap-[16%] pt-3 font-semibold'>
+                    <span className='w-[100%] flex md:justify-around lg:justify-around  pt-3 font-semibold'>
                         <span>Image</span>
                         <span>Course-Name</span>
                         <span>Quantity</span>

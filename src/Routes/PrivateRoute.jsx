@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthProvider)
     const location = useLocation()
-    
+     
     if (loading) {
         return <div className="loading loading-spinner loading-lg text-success absolute top-[50%] left-[50%]"></div>
     }

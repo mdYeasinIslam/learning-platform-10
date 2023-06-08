@@ -17,34 +17,42 @@ const Root = () => {
         {
             path: '/', element: <Main />, children: [
                 {
-                    path: '/', element: <Home />
+                    path: '/',
+                    loader:()=>{
+                        return fetch(`https://clever-yak-sari.cyclic.app/courseName`)
+                    },
+                    element: <Home />
                 },
                 {
-                    path: '/home', element: <Home />
+                    path: '/home',
+                    loader:()=>{
+                        return fetch(`https://clever-yak-sari.cyclic.app/courseName`)
+                    },
+                    element: <Home />
                 },
             ],
         },
         {
             path: '/', element: <SecondaryLayout />, children: [
-              
+
                 {
                     path: '/courses',
-                    loader:()=>{
-                        return  fetch(`https://clever-yak-sari.cyclic.app/courseName`)
+                    loader: () => {
+                        return fetch(`https://clever-yak-sari.cyclic.app/courseName`)
                     },
                     element: <AllCourses />
                 },
                 {
-                    path:'/courses/:id',
-                    loader:({params})=>fetch(`https://clever-yak-sari.cyclic.app/courseName/${params.id}`),
-                    element:<CourseDetails/>
-                }, 
+                    path: '/courses/:id',
+                    loader: ({ params }) => fetch(`https://clever-yak-sari.cyclic.app/courseName/${params.id}`),
+                    element: <CourseDetails />
+                },
                 {
-                    path:'/courses/checkout-page/:id',
-                    loader:({params})=>{
+                    path: '/courses/checkout-page/:id',
+                    loader: ({ params }) => {
                         return fetch(`https://clever-yak-sari.cyclic.app/courseName/${params.id}`)
                     },
-                    element:<PrivateRoute><CheckoutPage/></PrivateRoute>
+                    element: <PrivateRoute><CheckoutPage /></PrivateRoute>
                 },
                 {
                     path: '/faq', element: <PrivateRoute><Faq /></PrivateRoute>

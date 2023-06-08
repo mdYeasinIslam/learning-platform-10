@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css'
 import { AuthProvider } from '../../Context/UserContext';
 import { toast } from 'react-toastify';
@@ -29,17 +29,17 @@ const Navbar = () => {
                 </label>
 
                 <ul tabIndex={0} className={` menu menu-list dropdown-content  mt-3 gap-y-3 font-serif shadow bg-[#202c45] rounded-box w-52 ${show ? 'left-[50%]' : 'left-[-500px]'}`} >
-                    <Link to='/home'>Home</Link>
-                    <Link to='/courses'>Courses</Link>
-                    <Link to='/faq'>FAQ</Link>
-                    <Link to='/blog'>Blog</Link>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/home'>Home</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/courses'>Courses</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/faq'>FAQ</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/blog'>Blog</NavLink>
                     {
                         user?.uid ?
-                            <Link onClick={logOutHandler} to='/logIn'>Log Out</Link>
+                            <NavLink   className={({isActive})=>isActive?"after-active":""}  onClick={logOutHandler} to='/logIn'>Log Out</NavLink>
                             :
                             <>
-                                <Link to='/logIn'>Log In</Link>
-                                <Link to='/signUp'>Sign Up</Link>
+                                <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/logIn'>Log In</NavLink>
+                                <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/signUp'>Sign Up</NavLink>
                             </>
                     }
                 </ul>
@@ -47,22 +47,22 @@ const Navbar = () => {
 
             <div className="flex-1">
                 <img className='h-9 w-12 ml-5' src="src/assets/images (1).jpeg" alt="" />
-                <Link to='/home' className="btn btn-ghost text-[#F2184F] normal-case text-xl">StudyPress</Link>
+                <NavLink   to='/home' className="btn btn-ghost text-[#F2184F] normal-case text-xl">StudyPress</NavLink>
             </div>
 
             <div className=' text-white  hidden md:block items-center  mr-5 '>
                 <ul className='menu-list-2 flex gap-12'>
-                    <Link to='/home'>Home</Link>
-                    <Link to='/courses'>Courses</Link>
-                    <Link to='/faq'>FAQ</Link>
-                    <Link to='/blog'>Blog</Link>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/home'>Home</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/courses'>Courses</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/faq'>FAQ</NavLink>
+                    <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/blog'>Blog</NavLink>
                     {
                         user?.uid ?
-                            <Link onClick={logOutHandler} to='/logIn'>Log Out</Link>
+                            <NavLink   className={({isActive})=>isActive?"after-active":""}  onClick={logOutHandler} to='/logIn'>Log Out</NavLink>
                             :
                             <>
-                                <Link to='/logIn'>Log In</Link>
-                                <Link to='/signUp'>Sign Up</Link>
+                                <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/logIn'>Log In</NavLink>
+                                <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/signUp'>Sign Up</NavLink>
                             </>
                     }
                 </ul>
@@ -98,8 +98,8 @@ const Navbar = () => {
                                 <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><Link>Courses</Link></li>
-                        <li><Link>Logout</Link></li>
+                        <li><NavLink   className={({isActive})=>isActive?"after-active":""} >Courses</NavLink></li>
+                        <li><NavLink   className={({isActive})=>isActive?"after-active":""} >Logout</NavLink></li>
                     </ul>
                 </div>
             </div>

@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
     const { signInAuth } = useContext(AuthProvider)
-    const navigate = useNavigate()
+    let navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
+    let from = location.state?.from?.pathname || '/'
     const formHandler = e => {
-        e.preventDefault();
+        e.preventDefault(); 
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
