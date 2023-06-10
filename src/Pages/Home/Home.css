@@ -3,8 +3,4 @@
 }
 .home-page{
     overflow: hidden;
-    ::-webkit-scrollbar { 
-        display: none; 
-        }
-
 }
