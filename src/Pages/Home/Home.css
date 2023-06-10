@@ -1,3 +1,10 @@
 .card-style{
     transition: linear 2s;
 }
+.home-page{
+    overflow: hidden;
+    ::-webkit-scrollbar { 
+        display: none; 
+        }
+
+}

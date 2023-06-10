@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css'
 import { AuthProvider } from '../../Context/UserContext';
 import { toast } from 'react-toastify';
+import { AiOutlineMenuFold } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 const Navbar = () => {
     const [show, setShow] = useState(false)
     const { user, logOutAuth } = useContext(AuthProvider)
@@ -17,18 +19,14 @@ const Navbar = () => {
 
     return (
 
-        <div className="navbar  z-[-1] bg-[#202c45] text-white">
+        <div className="navbar  bg-[#202c45] text-white">
             <div className="dropdown dropdown-end block md:hidden">
-                <label tabIndex={0} className="btn btn-circle swap swap-rotate">
-                    <input type="checkbox" />
-
-                    <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
-
-                    <svg onClick={() => setShow(!show)} className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" /></svg>
-
-                </label>
-
-                <ul tabIndex={0} className={` menu menu-list dropdown-content  mt-3 gap-y-3 font-serif shadow bg-[#202c45] rounded-box w-52 ${show ? 'left-[50%]' : 'left-[-500px]'}`} >
+                   <div onClick={()=>setShow(!show)} >
+                     {
+                        show? <RxCross2 className='h-6 w-6'/>:<AiOutlineMenuFold  className='h-6 w-6'/>
+                     }
+                   </div>
+                <ul onClick={()=>setShow(false)} className={`menu-list absolute z-[1] w-[10rem] opacity-1 ${show?" grid top-14 bg-[#202c45] text-white p-4 rounded-xl gap-3 font-serif":"hidden"}`} >
                     <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/home'>Home</NavLink>
                     <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/courses'>Courses</NavLink>
                     <NavLink   className={({isActive})=>isActive?"after-active":""}  to='/faq'>FAQ</NavLink>
