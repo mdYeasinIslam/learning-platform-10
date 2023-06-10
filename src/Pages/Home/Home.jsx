@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className='home-page'>
             <Navbar />
-            <CarouselSlider/>
+            <CarouselSlider />
             <div className={`my-5`}>
                 <h2 className='text-3xl font-semibold w-[90%] mx-auto'>Available Courses :</h2> <hr className='my-3 ' />
                 {
@@ -36,7 +36,8 @@ const Home = () => {
             </div>
             <Footer />
         </div>
-    ) }
+    )
+}
 
 
 export default Home;

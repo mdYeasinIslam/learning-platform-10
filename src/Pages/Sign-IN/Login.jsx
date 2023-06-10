@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Context/UserContext';
 import { toast } from 'react-toastify';
+import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
+
 
 const Login = () => {
-    const { signInAuth } = useContext(AuthProvider)
+    const { signInAuth, google, github } = useContext(AuthProvider)
     let navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || '/'
     const formHandler = e => {
-        e.preventDefault(); 
+        e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -22,14 +25,33 @@ const Login = () => {
                 if (user) {
                     toast('You are successfully Log-In', {
                         position: toast.POSITION.TOP_CENTER
-                      })
+                    })
                     navigate(from, { replace: true })
                 }
-                else{
+                else {
                     navigate('/signUp')
                 }
             })
-            .catch(e=>console.error(e))
+            .catch(e => console.error(e))
+    }
+    const googleAuth = () => {
+        google()
+            .then(result => {
+                const user = result.user;
+                // console.log(user)
+                navigate('/home')
+            })
+            .catch(e => console.error(e))
+
+    }
+    const githubAuth = () => {
+        github()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate('/home')
+            })
+            .catch(e => console.error(e))
     }
     return (
         <div>
@@ -61,6 +83,12 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
+                            </div>
+                            <div className='border-4  mx-auto'>
+                                <button className='btn font-semibold'>Sign Up with GOOGLE :<FcGoogle onClick={googleAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
+                            </div>
+                            <div className='border-4  mx-auto'>
+                                <button className='btn font-semibold'>Sign Up with Github :<AiFillGithub onClick={githubAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
                             </div>
                         </div>
                     </form>

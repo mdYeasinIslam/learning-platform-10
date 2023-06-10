@@ -1,11 +1,7 @@
-.menu-list {
 
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.menu-list {
+.menu-list a{
     padding-left: 1rem;
+    color: white !important;
 
 }
 
@@ -16,6 +12,13 @@
     border-radius: 30px;
     padding: 0px 10px;
 }
+/* .after-active2 {
+    background-color: #F2184F;
+    transition: linear 0.6s;
+    color: black;
+    border-radius: 30px;
+    padding: 0px 10px;
+} */
 
 .menu-list a:hover {
     background-color: #F2184F;

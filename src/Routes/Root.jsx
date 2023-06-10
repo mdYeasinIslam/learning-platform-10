@@ -11,21 +11,27 @@ import SecondaryLayout from '../Layout/SecondaryLayout';
 import PrivateRoute from './PrivateRoute';
 import CourseDetails from '../Pages/Courses-page/CourseDetails/CourseDetails';
 import { CheckoutPage } from '../Pages/Courses-page/CheckOutPage/CheckoutPage';
+import NoFound from '../Pages/NoFound/NoFound';
+import UserDetails from '../Pages/UserDetails/UserDetails';
 
 const Root = () => {
     const router = createBrowserRouter([
         {
-            path: '/', element: <Main />, children: [
+            path: '/',
+            element: <Main />,
+            errorElement: <NoFound />,
+            children: [
                 {
                     path: '/',
-                    loader:()=>{
+                    loader: () => {
                         return fetch(`https://clever-yak-sari.cyclic.app/courseName`)
                     },
-                    element: <Home />
+                    element: <Home />,
+                    errorElement: <NoFound />
                 },
                 {
                     path: '/home',
-                    loader:()=>{
+                    loader: () => {
                         return fetch(`https://clever-yak-sari.cyclic.app/courseName`)
                     },
                     element: <Home />
@@ -33,7 +39,10 @@ const Root = () => {
             ],
         },
         {
-            path: '/', element: <SecondaryLayout />, children: [
+            path: '/',
+            element: <SecondaryLayout />,
+            errorElement: <NoFound />,
+            children: [
 
                 {
                     path: '/courses',
@@ -59,6 +68,9 @@ const Root = () => {
                 },
                 {
                     path: '/blog', element: <Blog />
+                },
+                {
+                    path: '/user-details', element: <UserDetails />
                 },
                 {
                     path: '/logIn', element: <Login />

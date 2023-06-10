@@ -20,7 +20,7 @@ const CarouselSlider = () => {
         <div className=' slider-style'>
             <Slider className='font-[cursive]' {...settings}>
                 <div>
-                    <img src="/src/assets/photo-1.jpg" />
+                    <img src="assets/photo-1.jpg" />
                     <div className='absolute w-full md:w-[60%]  text-white top-[7%] md:top-[15%] left-[4%] md:left-[20%]'>
                         <h1 className='upercase mb-2 text-4xl md:text-6xl font-semibold text-red-300'>Education</h1>
                         <h3 className='upercase text-3xl font-semibold mb-5'>Education for everyone</h3>
@@ -29,7 +29,7 @@ const CarouselSlider = () => {
                     </div>
                 </div>
                 <div>
-                    <img src="/src/assets/photo-2.jpg" />
+                    <img src="assets/photo-2.jpg" />
                     <div className='absolute  md::w-[60%] text-white top-[7%] md:top-[15%] left-[4%] md:left-[20%]'>
                         <h1 className='upercase mb-2 text-4xl md:text-6xl font-semibold text-red-300'>Best education </h1>
                         <h3 className='upercase text-3xl font-semibold mb-5'>For your better future</h3>
@@ -40,7 +40,7 @@ const CarouselSlider = () => {
                     </div>
                 </div>
                 <div>
-                    <img src="/src/assets/Photo-3.png" />
+                    <img src="assets/Photo-3.png" />
                     <div className='absolute md:w-[60%] text-white top-[7%] md:top-[15%] left-[4%] md:left-[20%]'>
                         <h1 className='upercase mb-2 text-5xl md:text-6xl font-semibold text-red-300'>Study Area</h1>
                         <h3 className='upercase text-3xl font-semibold mb-5'>Learn for success</h3>
