@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../Context/UserContext';
 import { toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import { AiFillGithub } from "react-icons/ai";
 
 const Login = () => {
     const { signInAuth, google, github } = useContext(AuthProvider)
+    const [error,setError] = useState('')
     let navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || '/'
@@ -32,7 +33,7 @@ const Login = () => {
                     navigate('/signUp')
                 }
             })
-            .catch(e => console.error(e))
+            .catch(e => setError(e.message))
     }
     const googleAuth = () => {
         google()
@@ -41,7 +42,7 @@ const Login = () => {
                 // console.log(user)
                 navigate('/home')
             })
-            .catch(e => console.error(e))
+            .catch(e => setError(e.message))
 
     }
     const githubAuth = () => {
@@ -51,7 +52,7 @@ const Login = () => {
                 console.log(user)
                 navigate('/home')
             })
-            .catch(e => console.error(e))
+            .catch(e => setError(e.message))
     }
     return (
         <div>
@@ -81,14 +82,15 @@ const Login = () => {
                                     <p className="label-text-alt ">Donot have any accont?? <Link to='/signUp ' className='link link-hover font-semibold'>Please Create an account</Link></p>
                                 </label>
                             </div>
+                            <p>Error : {error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>
                             <div className='border-4  mx-auto'>
-                                <button className='btn font-semibold'>Sign Up with GOOGLE :<FcGoogle onClick={googleAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
+                                <button className='btn font-semibold'>Sign In with GOOGLE :<FcGoogle onClick={googleAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
                             </div>
                             <div className='border-4  mx-auto'>
-                                <button className='btn font-semibold'>Sign Up with Github :<AiFillGithub onClick={githubAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
+                                <button className='btn font-semibold'>Sign In with Github :<AiFillGithub onClick={githubAuth} className='h-6 w-6 inline ml-3 hover:h-8 hover:w-8 hover:transition-all' /></button>
                             </div>
                         </div>
                     </form>

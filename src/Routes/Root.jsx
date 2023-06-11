@@ -70,7 +70,7 @@ const Root = () => {
                     path: '/blog', element: <Blog />
                 },
                 {
-                    path: '/user-details', element: <UserDetails />
+                    path: '/user-details', element: <PrivateRoute><UserDetails /></PrivateRoute>
                 },
                 {
                     path: '/logIn', element: <Login />

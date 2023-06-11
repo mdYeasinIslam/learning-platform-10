@@ -4,8 +4,10 @@ import { AuthProvider } from '../../Context/UserContext';
 import { toast } from 'react-toastify';
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { useState } from 'react';
 const SignUp = () => {
-    const { user, signUpAuth, userProfileUpdate, varifyEmail, google,github } = useContext(AuthProvider)
+    const { user, signUpAuth, userProfileUpdate, varifyEmail, google, github } = useContext(AuthProvider)
+    const [error, setError] = useState('')
     const navigate = useNavigate()
     const formHandler = e => {
         e.preventDefault();
@@ -26,13 +28,13 @@ const SignUp = () => {
                 navigate('/home')
                 //varify - email
                 emailVarification()
-            }).catch(e => console.error(e))
+            }).catch(e => setError(e.message))
     }
     const emailVarification = () => {
         varifyEmail()
             .then(() => {
                 toast('You have been send a varification mail,Please Check....')
-            }).catch(e => console.error(e))
+            }).catch(e => setError(e.message))
     }
     const googleAuth = () => {
         google()
@@ -40,7 +42,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 navigate('/home')
-            })
+            }).catch(e => setError(e.message))
     }
     const githubAuth = () => {
         github()
@@ -48,7 +50,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user)
                 navigate('/home')
-            })
+            }).catch(e => setError(e.message))
     }
     return (
         <div>
@@ -90,6 +92,7 @@ const SignUp = () => {
                                     <p className="label-text-alt ">Already have an accont !!<Link to='/logIn ' className='link link-hover font-semibold'>Please log-In</Link></p>
                                 </label>
                             </div>
+                            <p>Error :{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign Up</button>
                             </div>

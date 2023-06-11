@@ -13,10 +13,11 @@ const PrivateRoute = ({ children }) => {
     if (user && user.emailVerified == true) {
         return children
     }
-    else {
+    else{
         toast('Your email is not varified,Please varified your email')
         return <Navigate to='/logIn' state={{ from: location }} replace />
     }
+
 };
 
 export default PrivateRoute;

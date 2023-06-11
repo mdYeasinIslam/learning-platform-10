@@ -53,7 +53,6 @@ const UserContext = ({ children }) => {
         })
         return () => subcription();
     }, [])
-    console.log(user)
    
     const userInfo = { user, signUpAuth, signInAuth, userProfileUpdate, logOutAuth, loading, varifyEmail,google,github }
     return (
